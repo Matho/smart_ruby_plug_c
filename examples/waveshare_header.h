@@ -14,10 +14,8 @@
 #ifndef _TRST_H_
 #define _TRST_H_
 
-
-
-void LCD_1in3_test(void);
-void  KEY_1in3_test(void);
+void LCD_redraw(int screen_id, const char *message_line1, const char *message_line2, int waiting_for_key_press, int waiting_in_booting);
+int KEY_listen(int ping_interval);
 
 
 #endif

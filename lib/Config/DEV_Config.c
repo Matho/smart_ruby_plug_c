@@ -135,7 +135,7 @@ UBYTE DEV_ModuleInit(void)
         DEBUG("set wiringPi lib failed	!!! \r\n");
         return 1;
     } else {
-        DEBUG("set wiringPi lib success  !!! \r\n");
+//        DEBUG("set wiringPi lib success  !!! \r\n");
     }
     DEV_GPIO_Init();
     wiringPiSPISetup(0,90000000);
