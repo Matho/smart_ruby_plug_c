@@ -1,7 +1,7 @@
 # Smart Ruby Plug - C code
 
 This is `C language` repository for [Smart Ruby Plug](https://github.com/Matho/smart_ruby_plug). It is repository to redraw LCD screen and for detecting key press.
-This project needs to be build on Raspberry Pi 3+ with aarch64 instruction set. 
+This project needs to be build on Raspberry Pi with aarch64/armv7l instruction set.  
 
 Prebuilded `.so` files are also available at [Matho/smart_ruby_plug_c_binaries](https://github.com/Matho/smart_ruby_plug_c_binaries), but not for each repository commit. 
 
