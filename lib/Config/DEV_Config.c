@@ -12,6 +12,9 @@
 #include "DEV_Config.h"
 
 
+static int wiringPiFileDescriptor ;
+
+
 /*****************************************
                 GPIO
 *****************************************/
@@ -112,6 +115,7 @@ function:	Module Initialize, the library and initialize the pins, SPI protocol
 parameter:
 Info:
 ******************************************************************************/
+
 UBYTE DEV_ModuleInit(void)
 {
  #ifdef USE_BCM2835_LIB
@@ -138,7 +142,11 @@ UBYTE DEV_ModuleInit(void)
 //        DEBUG("set wiringPi lib success  !!! \r\n");
     }
     DEV_GPIO_Init();
-    wiringPiSPISetup(0,90000000);
+
+    if ((wiringPiFileDescriptor = wiringPiSPISetup (0,90000000)) < 0) {
+        fprintf (stderr, "Can't open the SPI bus: %s\n", strerror (errno)) ;
+        exit (1) ;
+    }
     
 #elif USE_DEV_LIB
     DEV_GPIO_Init();
@@ -188,7 +196,7 @@ void DEV_ModuleExit(void)
     bcm2835_spi_end();
     bcm2835_close();
 #elif USE_WIRINGPI_LIB
-
+    close(wiringPiFileDescriptor) ;
 
 #elif USE_DEV_LIB
     DEV_HARDWARE_SPI_end();
